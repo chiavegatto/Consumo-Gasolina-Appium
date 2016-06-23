@@ -27,7 +27,7 @@ public class AdicionarAbastecimentoTest extends BaseTest {
 	}
 
 	@Test
-	public void abastecimentoComADataAtualDoSistema() {
+	public void adicionarAbastecimentoNoMesAtual() {
 
 		String txKMAbastecimento = "45744";
 		String txLitros = "47.95";
@@ -45,34 +45,12 @@ public class AdicionarAbastecimentoTest extends BaseTest {
 	}
 
 	@Test
-	public void abastecimentoComADataDiferenteDaDataAtual() throws ParseException {
+	public void adicionarAbastecimentoParaMesDiferenteDeMesAtual() throws ParseException {
 
 		String txKMAbastecimento = "45296";
 		String txLitros = "39.97";
 		String txValor = "152.69";
-
 		String txDataAbastecimento = "14/04/2016";
-		String txQuantidadeAbastecimentoNoMes = "1 Vez(es)/Mês";
-
-		pageAdicionarAbastecimento.informarKMNoAbastecimento(txKMAbastecimento);
-		pageAdicionarAbastecimento.informarLitrosNoAbastecimento(txLitros);
-		pageAdicionarAbastecimento.informarValorNoAbastecimento(txValor);
-		pageAdicionarAbastecimento.clicarNoCampoData();
-		pageAdicionarAbastecimento.preencherODatePicker(Util.retornaDataAtualComMenosUmDia(txDataAbastecimento));
-		pageAdicionarAbastecimento.clicarNoBotaoCadastrar();
-
-		assertTrue(pagePrincipal.retornaOValorAbastecidoNoMes().contains(txValor));
-		assertTrue(pagePrincipal.retornaQuantidadeDeLitrosAbastecidosNoMes().contains(txLitros));
-		assertTrue(pagePrincipal.retornaAQuantidadeDeVezesAbastecidaNoMes().contains(txQuantidadeAbastecimentoNoMes));
-	}
-
-	@Test
-	public void abastecimentoComADataDiferenteDoMesAtual() throws ParseException {
-
-		String txKMAbastecimento = "45296";
-		String txLitros = "39.97";
-		String txValor = "152.69";
-		String txDataAbastecimento = "14/03/2016";
 
 		pageAdicionarAbastecimento.informarKMNoAbastecimento(txKMAbastecimento);
 		pageAdicionarAbastecimento.informarLitrosNoAbastecimento(txLitros);
